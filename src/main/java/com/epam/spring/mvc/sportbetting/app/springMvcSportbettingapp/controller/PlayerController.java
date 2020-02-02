@@ -1,8 +1,8 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.controller;
 
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.HomeScreenInputDto;
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.SumDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.entity.OutputBetObject;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.HomeScreenInputDto;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.SumDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,19 +31,16 @@ public class PlayerController {
 
   @RequestMapping(value = "/savePlayer", method = RequestMethod.POST)
   public String savePlayer(@ModelAttribute("/homeScreenInput") HomeScreenInputDto homeScreenInputDto, Model model) {
-
     if (!inputValidator.validate(homeScreenInputDto)) {
       return "invalidInput";
+    } else {
+      userServise.updatePlayer(homeScreenInputDto);
+      List<OutputBetObject> outputBetObjects = dataPreparationService.getOutputBetObjects();
+
+      model.addAttribute("outputBetObjects", outputBetObjects);
+      model.addAttribute("balance", new BigDecimal(homeScreenInputDto.getBalance()));
+      return "chooseOutcome";
     }
-    userServise.updatePlayer(homeScreenInputDto);
-
-
-    List<OutputBetObject> outputBetObjects = dataPreparationService.getOutputBetObjects();
-
-    model.addAttribute("outputBetObjects", outputBetObjects);
-    model.addAttribute("balance", new BigDecimal(homeScreenInputDto.getBalance()));
-
-    return "chooseOutcome";
   }
 
   @RequestMapping(value = "/updateBalance", method = RequestMethod.POST)
@@ -54,13 +51,14 @@ public class PlayerController {
       model.addAttribute("currentBalance", playerBalance);
       model.addAttribute("sum", sum);
       return "notEnoughMoney";
+    } else {
+      BigDecimal balance = userServise.updateBalance(sumDto.getSum(), playerBalance);
+      betTempDataService.saveSum(sum);
+      wagerService.createWager();
+      List<OutputBetObject> outputBetObjects = dataPreparationService.getOutputBetObjects();
+      model.addAttribute("outputBetObjects", outputBetObjects);
+      model.addAttribute("balance", balance);
+      return "chooseOutcome";
     }
-    BigDecimal balance = userServise.updateBalance(sumDto.getSum(), playerBalance);
-    betTempDataService.saveSum(sum);
-    wagerService.createWager();
-    List<OutputBetObject> outputBetObjects = dataPreparationService.getOutputBetObjects();
-    model.addAttribute("outputBetObjects", outputBetObjects);
-    model.addAttribute("balance", balance);
-    return "chooseOutcome";
   }
 }

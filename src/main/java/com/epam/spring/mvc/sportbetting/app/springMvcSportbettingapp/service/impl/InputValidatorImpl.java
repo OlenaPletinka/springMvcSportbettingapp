@@ -1,6 +1,6 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.impl;
 
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.HomeScreenInputDto;
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.HomeScreenInputDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.InputValidator;
 import org.springframework.stereotype.Service;
 

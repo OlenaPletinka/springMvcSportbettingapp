@@ -1,8 +1,8 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service;
 
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.HomeScreenInputDto;
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.UserDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.entity.Player;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.HomeScreenInputDto;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.UserDto;
 
 import java.math.BigDecimal;
 import java.util.UUID;

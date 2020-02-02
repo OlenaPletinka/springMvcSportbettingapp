@@ -1,7 +1,7 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.controller;
 
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.UserDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.entity.OutputBetObject;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.UserDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.AuthenticationService;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.DataPreparationService;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.UserServise;
@@ -27,17 +27,14 @@ public class AuthController {
   private UserServise userServise;
   @Autowired
   private DataPreparationService dataPreparationService;
-  @Autowired
-  private UserServise getUserServise;
 
   @RequestMapping(value = "/", method = GET)
-  public String main(Model model) {
-
+  public String startPage() {
     return "welcome";
   }
 
   @RequestMapping(value = "logIn", method = POST)
-  public String homeScreen(@ModelAttribute("user") UserDto user, HttpServletResponse response, Model model) {
+  public String profile(@ModelAttribute("user") UserDto user, HttpServletResponse response, Model model) {
     String result;
     if (authenticationService.isRegistered(user)) {
       UUID uuid = userServise.updateToken(user);

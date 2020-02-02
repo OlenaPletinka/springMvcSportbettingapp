@@ -38,7 +38,7 @@ public class BetTempDataServiceImpl implements BetTempDataService {
   @Override
   public BetTempData getFirst() {
     Optional<BetTempData> optionalData = betTempDataRepository.findById(1L);
-    return optionalData.get();
+    return optionalData.orElseThrow(IllegalStateException::new); //always present
   }
 
   @Transactional

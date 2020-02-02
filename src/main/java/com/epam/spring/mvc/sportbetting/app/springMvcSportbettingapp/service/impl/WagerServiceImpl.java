@@ -42,7 +42,7 @@ public class WagerServiceImpl implements WagerService {
 
   @Override
   public List<Wager> processWagers(Long winnerId) {
-    setprocessed();
+    setProcessed();
     wagerRepository.updateIsWin(winnerId);
     return wagerRepository.findAllByOutcomeOddId(winnerId);
   }
@@ -53,7 +53,7 @@ public class WagerServiceImpl implements WagerService {
     wagerRepository.deleteAll();
   }
 
-  private void setprocessed() {
+  private void setProcessed() {
     long count = wagerRepository.count();
     for (int i = 0; i < count; i++) {
       wagerRepository.updateIsProcessed((long) i);

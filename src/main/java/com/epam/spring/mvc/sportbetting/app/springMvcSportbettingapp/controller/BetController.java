@@ -1,7 +1,7 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.controller;
 
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.ChoiceDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.entity.OutcomeOdd;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.ChoiceDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.BetTempDataService;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.DataPreparationService;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.InputValidator;
@@ -28,13 +28,12 @@ public class BetController {
   private UserServise userServise;
 
   @RequestMapping(value = "/chooseBet", method = RequestMethod.POST)
-  public String validate(@ModelAttribute("choiceDto") ChoiceDto choiceDto, Model model) {
+  public String chooseBet(@ModelAttribute("choiceDto") ChoiceDto choiceDto, Model model) {
     String choice = choiceDto.getChoice();
     String result;
     if (!inputValidator.validateFirstBetOn(choice)) {
-      return "madeCorrectChoice";
-    }
-    if (choice.equals("q")) {
+      result = "madeCorrectChoice";
+    } else if (choice.equals("q")) {
       OutcomeOdd winner = dataPreparationService.getWinner();
       BigDecimal sum = userServise.calculateGain(winner.getId(), winner.getValue());
       dataPreparationService.finishGame();

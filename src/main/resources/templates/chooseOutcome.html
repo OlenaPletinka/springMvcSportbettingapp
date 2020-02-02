@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <title>Choose outcome</title>
     <h1>
-        <font size="6" color="#000000">
+        <font color="#000000" size="6">
             <span th:text="'Your new balance is - ' + ${balance}"></span>
         </font>
     </h1>
     <h2>
-        <font size="6" color="#00FFFF">
+        <font color="#00FFFF" size="6">
             Please choose an outcome to bet on! (choose a number or press q for quit)
         </font>
     </h2>
 
 </head>
 <body>
-<form action="/bet/chooseBet" th:object="${choiseDto}" method="post">
+<form action="/bet/chooseBet" method="post" th:object="${choiseDto}">
     <ol>
         <li th:each="outputBetObject : ${outputBetObjects}" th:text="${outputBetObject}"></li>
     </ol>
-    <font size="5" color="#00FFFF">
+    <font color="#00FFFF" size="5">
         Made your choice:<br>
-        <input type="text" name="choice"><br>
+        <input name="choice" type="text"><br>
     </font>
 </form>
 </body>

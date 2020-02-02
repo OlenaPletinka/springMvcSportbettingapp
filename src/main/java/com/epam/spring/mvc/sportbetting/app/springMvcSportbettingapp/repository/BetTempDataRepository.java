@@ -24,9 +24,6 @@ public interface BetTempDataRepository extends CrudRepository<BetTempData, Long>
   @Query(value = "UPDATE bet_temp_data SET sum = :sum WHERE id = 1", nativeQuery = true)
   void saveSum(@Param("sum") BigDecimal sum);
 
-  @Query(value = "SELECT player_id FROM bet_temp_data WHERE id = 1", nativeQuery = true)
-  Long findPlayerId();
-
   @Modifying
   @Query(value = "UPDATE bet_temp_data SET choice = null, player_id = null, sum = null WHERE id = 1",
             nativeQuery = true)

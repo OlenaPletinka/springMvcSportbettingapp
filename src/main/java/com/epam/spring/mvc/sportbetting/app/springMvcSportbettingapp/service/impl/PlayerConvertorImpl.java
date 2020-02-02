@@ -1,8 +1,8 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.impl;
 
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.HomeScreenInputDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.entity.Player;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.enums.Currency;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.HomeScreenInputDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.PlayerConvertor;
 import org.springframework.stereotype.Service;
 

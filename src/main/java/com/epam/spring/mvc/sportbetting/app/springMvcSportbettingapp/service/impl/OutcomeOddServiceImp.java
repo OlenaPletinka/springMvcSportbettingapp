@@ -13,7 +13,7 @@ public class OutcomeOddServiceImp implements OutComeOddService {
 
   @Override
   public OutcomeOdd findById(Long id) {
-    return outcomeOddRepository.findById(id).get();
+    return outcomeOddRepository.findById(id).orElseThrow(IllegalStateException::new); //always present;
   }
 
   @Override

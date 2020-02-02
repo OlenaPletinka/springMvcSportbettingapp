@@ -1,6 +1,6 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service;
 
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.UserDto;
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.UserDto;
 
 import java.util.UUID;
 

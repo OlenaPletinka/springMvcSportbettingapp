@@ -47,8 +47,12 @@ public class TransactionFilter implements Filter {
 
   private boolean checkCookie(HttpServletRequest req) {
     Cookie[] cookies = req.getCookies();
-    String token = Arrays.stream(cookies).filter(cookie -> cookie.getName().equals("token"))
-              .findFirst().get().getValue();
+    String token = Arrays.stream(cookies)
+              .filter(cookie -> cookie.getName().equals("token"))
+              .map(Cookie::getValue)
+              .findFirst()
+              .orElseThrow(IllegalStateException::new);
+
     Player playerByToken = userServise.findUserByToken(token);
     if (Objects.nonNull(playerByToken)) {
       userHolder.setUserId(playerByToken.getId());

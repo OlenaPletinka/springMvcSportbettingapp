@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Home screen</title>
-    <font size="6" color="#00FFFF">
+    <font color="#00FFFF" size="6">
         <b> Account details</b>
     </font>
 </head>
 <body>
-<form action="/player/savePlayer" th:object="${homeScreenInput}" method="post">
+<form action="/player/savePlayer" method="post" th:object="${homeScreenInput}">
     Name:<br>
-    <input type="text" name="name"><br>
+    <input name="name" type="text"><br>
 
     Account number:<br>
-    <input type="text" name="accountNumber"><br>
+    <input name="accountNumber" type="text"><br>
 
     Date of birth:<br>
-    <input type="text" name="birth"><br>
+    <input name="birth" type="text"><br>
 
     Currency:<br>
-    <input type="radio" name="Currency" value="USD">USD<br>
-    <input type="radio" name="Currency" value="EUR">EUR<br>
-    <input type="radio" name="Currency" value="UAH">UAH<br>
+    <input name="Currency" type="radio" value="USD">USD<br>
+    <input name="Currency" type="radio" value="EUR">EUR<br>
+    <input name="Currency" type="radio" value="UAH">UAH<br>
 
     Balance:<br>
-    <input type="text" name="balance"><br>
+    <input name="balance" type="text"><br>
 
 
     <button style="background-color:aqua; border-color:blue; color:white">Save</button>

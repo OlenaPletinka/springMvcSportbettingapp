@@ -1,7 +1,7 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.impl;
 
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.UserDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.entity.Player;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.UserDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.AuthenticationService;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.PasswordMD5Service;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.UserServise;
@@ -22,11 +22,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   @Override
   public boolean isRegistered(UserDto userDto) {
     Player player = userServise.findByLogin(userDto.getLogin());
-    if (Objects.nonNull(player)) {
-      return check(userDto, player);
-    } else {
-      return false;
-    }
+
+    return Objects.nonNull(player) && checkCreds(userDto, player);
   }
 
   @Override
@@ -42,7 +39,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     } else {
       return userByLogin.getAccessToken();
     }
-
   }
 
   private boolean isUserNotNull(Player player) {
@@ -58,7 +54,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     return player;
   }
 
-  private boolean check(UserDto userDto, Player player) {
+  private boolean checkCreds(UserDto userDto, Player player) {
     String codePassword = passwordMD5Service.codePassword(userDto.getPassword());
     String password = player.getPassword();
     return userServise.checkIsRegistered(player) && codePassword.equals(password);

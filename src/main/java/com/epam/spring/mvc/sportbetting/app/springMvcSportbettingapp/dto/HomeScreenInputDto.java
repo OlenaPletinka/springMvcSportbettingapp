@@ -1,4 +1,4 @@
-package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model;
+package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto;
 
 import lombok.Data;
 

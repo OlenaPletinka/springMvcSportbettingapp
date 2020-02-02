@@ -1,9 +1,9 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.impl;
 
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.HomeScreenInputDto;
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.UserDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.entity.Player;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.entity.Wager;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.HomeScreenInputDto;
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.UserDto;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.repository.PlayerRepository;
 import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,11 +77,6 @@ public class UserServiceImpl implements UserServise {
     } else {
       return BigDecimal.ZERO;
     }
-  }
-
-  @Override
-  public Player findPlayerId() {
-    return playerRepository.findById(userHolder.getUserId()).get();
   }
 
   @Override

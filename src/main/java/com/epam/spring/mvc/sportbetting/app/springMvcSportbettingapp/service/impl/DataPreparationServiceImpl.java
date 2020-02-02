@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -30,16 +31,15 @@ public class DataPreparationServiceImpl implements DataPreparationService {
 
   @Override
   public List<OutputBetObject> getOutputBetObjects() {
+    return new ArrayList<>(Arrays.asList(
+              getOutputBetObject(1L),
+              getOutputBetObject(2L),
+              getOutputBetObject(3L)
+    ));
+  }
 
-    List<OutputBetObject> outputBetObjects = new ArrayList<>();
-    outputBetObjects.add(
-              createOutputBetObject(getSportEventTitle(), getOutcome(1L), getOutcomeOdd(1L)));
-    outputBetObjects.add(
-              createOutputBetObject(getSportEventTitle(), getOutcome(2L), getOutcomeOdd(2L)));
-    outputBetObjects.add(
-              createOutputBetObject(getSportEventTitle(), getOutcome(3L), getOutcomeOdd(3L)));
-
-    return outputBetObjects;
+  private OutputBetObject getOutputBetObject(long l) {
+    return createOutputBetObject(getSportEventTitle(), getOutcome(l), getOutcomeOdd(l));
   }
 
   @Transactional
@@ -59,10 +59,8 @@ public class DataPreparationServiceImpl implements DataPreparationService {
 
   }
 
-
   private OutcomeOdd getOutcomeOdd(Long id) {
-    OutcomeOdd outcomeOdd = outComeOddService.findById(id);
-    return outcomeOdd;
+    return outComeOddService.findById(id);
   }
 
   private Outcome getOutcome(Long id) {

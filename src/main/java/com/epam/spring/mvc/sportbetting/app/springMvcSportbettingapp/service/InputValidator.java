@@ -1,6 +1,6 @@
 package com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.service;
 
-import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.model.HomeScreenInputDto;
+import com.epam.spring.mvc.sportbetting.app.springMvcSportbettingapp.dto.HomeScreenInputDto;
 
 import java.math.BigDecimal;
 

@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 public class PasswordMD5ServiceImpl implements PasswordMD5Service {
   @Override
   public String codePassword(String password) {
-    MessageDigest md = null;
+    MessageDigest md;
     try {
       md = MessageDigest.getInstance("MD5");
     } catch (NoSuchAlgorithmException e) {
