@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <font size="6" color="#00FFFF">
+        <b> Results:</b>
+    </font>
+</head>
+<body>
+<h1>
+    <font size="4" color="#000000">
+        <span th:text="'The winner is Outcome ' + ${outcomeOdd}"></span>
+    </font>
+</h1><br>
+<br>
+<h2>
+    <font size="6" color="#00FFFF">
+        <span th:text="'You have won ' + ${sum} + ${currency}"></span>
+    </font>
+</h2><br>
+</body>
+</html>

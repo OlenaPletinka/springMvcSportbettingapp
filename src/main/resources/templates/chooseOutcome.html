@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose outcome</title>
+    <h1>
+        <font size="6" color="#000000">
+            <span th:text="'Your new balance is - ' + ${balance}"></span>
+        </font>
+    </h1>
+    <h2>
+        <font size="6" color="#00FFFF">
+            Please choose an outcome to bet on! (choose a number or press q for quit)
+        </font>
+    </h2>
+
+</head>
+<body>
+<form action="/bet/chooseBet" th:object="${choiseDto}" method="post">
+    <ol>
+        <li th:each="outputBetObject : ${outputBetObjects}" th:text="${outputBetObject}"></li>
+    </ol>
+    <font size="5" color="#00FFFF">
+        Made your choice:<br>
+        <input type="text" name="choice"><br>
+    </font>
+</form>
+</body>
+</html>
+

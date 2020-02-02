@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Not enough money</title>
+    <font size="6" color="#00FFFF">
+        <span th:text="'Your balance is - ' + ${currentBalance}"></span>
+    </font><br>
+</head>
+<body>
+<form action="/bet/repeatedBet" method="get">
+    <font size="3" color="#000000">
+        <span th:text="'You want make bet on sum - ' + ${sum}"></span><br>
+        You haven't enough money!<br>
+    </font>
+    <font size="4" color="#00FFFF">
+        Please make bet on the correct sum!
+    </font>
+    <button style="background-color:aqua; border-color:blue; color:white">OK</button>
+</form>
+</body>
+</html>
