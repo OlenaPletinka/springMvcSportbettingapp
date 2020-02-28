@@ -59,4 +59,5 @@ public class WagerServiceImpl implements WagerService {
       wagerRepository.updateIsProcessed((long) i);
     }
   }
-}
+
+  }
